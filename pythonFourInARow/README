@@ -1,0 +1,143 @@
+ayal.meitar, shaharna13
+309981215, 313586877
+Ayal Meitar, Shahar Nahum
+
+We discussed the exercise with: Ram Glantz , Hadas Stern, amit schwartz
+
+we used the site: stack overflow
+
+===================================================
+=  README for ex12:   =
+===================================================
+the code includes the following files:
+game.py, gui.py,​ ai.py, four_in_a_row.py
+merge_round.png, homer_round.png, full_donut.png, full_donut_hoover.png, win.png
+==================
+=  Description:  =
+==================
+each file includes the following:
+
+game.py:
+
+the file includes a class of game which represents a connect four game, and a
+class of the exception illegal move.
+
+        class Game has the following attributes:
+        1.__board - the game board
+        2.__number_of_moves - the number of moves made in the game
+        3. __current_player - whos the current player
+        4. is_game_on - true while the game is on, false otherwise
+
+the Game includes the following functions:
+
+_is_move_legal(self, col):
+        The function receives a game and a number of col and return True if the
+        move is legal:
+        1. the col exists in the board
+        2. the col is not full.
+
+_add_disc(self, column):
+        the function gets a game and a column chosen and adds the disc of the
+        current player to the matching column
+
+
+make_move(self, column):
+        The function checks whether or not the move asked from the user is
+        legal. If its not legal the function will raise the exception:
+        "illegal move".
+        Else the function will make the move (update the board), update the
+        current player attribute and the number of turns attribute.
+
+_find_winner_helper(direction_lst):
+        the function checks if there is a streak of 4 discs of the same player,
+        meaning he won, so the function will return the winner, else it will
+        return None
+
+is_board_full(self):
+        the function checks whether or not the board is full.
+
+get_winner(self):
+        the function builds a builds a list of lists for each direction.
+        than checks if a player won and returns the player who won, else the
+        function returns None
+
+
+get_player_at(self, row, col):
+        the function returns the value in the matching spot
+
+the class IllegalMove(Exception):
+    an exception for an illegal move in the game four connect
+
+##############################################################################
+
+ai.py:
+
+the file includes a class AI which represents a class of a computer player in
+connect for which includes the function:
+
+find_legal_move(self, g, func, timeout=None):
+        The function randomize a value between 0 to 6 which is also a legal
+        move. Then the function sends it to the function received.
+
+and the class NoPossibleMove(Exception):
+    The exception raised when there are no possible AI move
+
+##############################################################################
+gui.py:
+
+the file includes the class ConnectFour and it's functions which represents the
+the gui for the game connect four. the class includes the following functions:
+
+build_communication(self, ip, parent, port):
+        the function builds the communication between the client and the server
+
+add_widgets(self, parent):
+        the function adds widgets to the frame
+
+create_dots_frame(self, parent):
+        the function creates the widgets above the frame of the board.
+
+
+create_discs(self, parent):
+        the function crates a 2D grid so that each spot will be a canvas that
+        includes an oval, and will have it's own indexes
+
+bind_press(self, canvas, i, j):
+        the function binds a press and a hoover to every button.
+
+button_hoover(self, j):
+        The function deals with the hoovering in the column
+
+button_hoover_out(self, j):
+        The function deals with the hoovering out from the column
+
+button_press(self, i):
+        the function binds a press action to the add disc function while
+        verifying that the player who made the move is the one allowed to.
+__add_disc(self, i):
+        the function adds a yellow disc if player one puts a disc, and a red
+        disc if the second player puts a disc
+
+color_winning_discs(self, winning_location_list):
+        The function gets a list of the winning discs and paints them in green.
+
+response_message(self, text=None):
+        Specifies the event handler for the message getting event in the
+        communicator.
+
+
+four_in_a_row.py:
+
+      the file in cludes the following functions:
+      1. check_args(argv)
+            The function checks if the input is valid
+
+      2. main(argv):
+      the function runs a four in a row game, according to the parameters given
+      either starts as a server or a client human or ai
+
+
+
+======================
+=  Special Comments  =
+======================
